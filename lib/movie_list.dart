@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/movie_title.dart';
 
 class MovieList extends StatefulWidget {
   @override
@@ -34,7 +35,17 @@ class _MovieListState extends State<MovieList> {
           )
         ],
       ),
-      body: Padding(padding: EdgeInsets.all(16.0),child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [],),),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            MovieTitle(
+              mainColor: mainColor,
+            )
+          ],
+        ),
+      ),
     );
   }
 }
