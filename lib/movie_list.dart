@@ -34,6 +34,7 @@ class _MovieListState extends State<MovieList> {
           )
         ],
       ),
+      body: Padding(padding: EdgeInsets.all(16.0),child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [],),),
     );
   }
 }
