@@ -63,6 +63,14 @@ class _MovieListState extends State<MovieList> {
           children: [
             MovieTitle(
               mainColor: mainColor,
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: movies == null? 0 : movies.length,
+                itemBuilder: (context, i){
+                  FlatButton(onPressed: (){}, child: null);
+                },
+              ),
             )
           ],
         ),
