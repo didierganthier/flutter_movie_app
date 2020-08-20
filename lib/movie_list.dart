@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/constants.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -12,8 +13,25 @@ class MovieList extends StatefulWidget {
 class _MovieListState extends State<MovieList> {
   Color mainColor = const Color(0xff3C3261);
 
+  var movies;
+
+  Future<Map> getJson() async{
+    var url = 'http://api.themoviedb.org/3/discover/movie?api_key=$apiKey';
+    http.Response response = await http.get(url);
+    return json.decode(response.body);
+  }
+
+  void getData() async{
+    var data = await getJson();
+
+    setState(() {
+      movies = data['results'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    getData();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
