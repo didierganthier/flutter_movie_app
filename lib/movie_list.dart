@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/constants.dart';
 import 'package:flutter_movie_app/movie_cell.dart';
+import 'package:flutter_movie_app/movie_details.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -70,7 +71,9 @@ class _MovieListState extends State<MovieList> {
                 itemCount: movies == null ? 0 : movies.length,
                 itemBuilder: (context, i) {
                   return FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>MovieDetails(movies[i])));
+                    },
                     child: MovieCell(
                       movies: movies,
                       i: i,
