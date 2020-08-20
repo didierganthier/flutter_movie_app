@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/constants.dart';
+import 'package:flutter_movie_app/movie_cell.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -15,13 +16,13 @@ class _MovieListState extends State<MovieList> {
 
   var movies;
 
-  Future<Map> getJson() async{
+  Future<Map> getJson() async {
     var url = 'http://api.themoviedb.org/3/discover/movie?api_key=$apiKey';
     http.Response response = await http.get(url);
     return json.decode(response.body);
   }
 
-  void getData() async{
+  void getData() async {
     var data = await getJson();
 
     setState(() {
@@ -66,9 +67,17 @@ class _MovieListState extends State<MovieList> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: movies == null? 0 : movies.length,
-                itemBuilder: (context, i){
-                  FlatButton(onPressed: (){}, child: null);
+                itemCount: movies == null ? 0 : movies.length,
+                itemBuilder: (context, i) {
+                  return FlatButton(
+                    onPressed: () {},
+                    child: MovieCell(
+                      movies: movies,
+                      i: i,
+                    ),
+                    padding: EdgeInsets.all(0.0),
+                    color: Colors.white,
+                  );
                 },
               ),
             )
